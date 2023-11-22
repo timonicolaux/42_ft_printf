@@ -17,6 +17,9 @@ $(NAME): $(OBJ) $(LIB)
 		ar rcs $(NAME) $(OBJ)
 		ranlib ${NAME}
 
+compil:
+		cc *.c
+
 clean:
 	/bin/rm -f
 	make -C ${LIBFT_PATH} clean

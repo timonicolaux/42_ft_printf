@@ -1,28 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   print_num.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tnicolau <tnicolau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/21 13:16:35 by tnicolau          #+#    #+#             */
-/*   Updated: 2023/11/22 15:50:42 by tnicolau         ###   ########.fr       */
+/*   Created: 2023/11/22 13:46:45 by tnicolau          #+#    #+#             */
+/*   Updated: 2023/11/22 13:50:46 by tnicolau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# include "libft/libft.h"
-# include <stdio.h>
-# include <unistd.h>
-# include <stdarg.h>
+int	print_num(int n)
+{
+	int	n_copy;
 
-int	ft_printf(const char *str, ...);
-int	print_char(int c);
-int	print_str(char *str);
-int	print_num(int n);
-int	print_unsigned(unsigned int n);
-int	print_hex(unsigned int n);
-
-#endif
+	n_copy = n;
+	if (n == -2147483648)
+	{
+		print_str("-2147483648");
+		return (n);
+	}
+	else
+	{
+		if (n < 0)
+		{
+			print_char(n);
+			n *= -1;
+		}
+		if (n >= 10)
+		{
+			print_num(n / 10);
+			print_num(n % 10);
+		}
+		else
+			print_char(n + '0');
+	}
+	return (n_copy);
+}

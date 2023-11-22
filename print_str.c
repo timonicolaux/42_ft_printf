@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   print_str.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tnicolau <tnicolau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/21 13:16:35 by tnicolau          #+#    #+#             */
-/*   Updated: 2023/11/22 15:50:42 by tnicolau         ###   ########.fr       */
+/*   Created: 2023/11/22 13:25:02 by tnicolau          #+#    #+#             */
+/*   Updated: 2023/11/22 13:30:30 by tnicolau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# include "libft/libft.h"
-# include <stdio.h>
-# include <unistd.h>
-# include <stdarg.h>
+int	print_str(char *str)
+{
+	int	res;
 
-int	ft_printf(const char *str, ...);
-int	print_char(int c);
-int	print_str(char *str);
-int	print_num(int n);
-int	print_unsigned(unsigned int n);
-int	print_hex(unsigned int n);
-
-#endif
+	res = 0;
+	while(str[res])
+	{
+		write(1, &str[res], 1);
+		res++;
+	}
+	return (res);
+}
