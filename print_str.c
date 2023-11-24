@@ -6,7 +6,7 @@
 /*   By: tnicolau <tnicolau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 13:25:02 by tnicolau          #+#    #+#             */
-/*   Updated: 2023/11/22 13:30:30 by tnicolau         ###   ########.fr       */
+/*   Updated: 2023/11/24 12:04:30 by tnicolau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,12 @@ int	print_str(char *str)
 	int	res;
 
 	res = 0;
-	while(str[res])
+	if (!str)
+	{
+		write(1, "(null)", 6);
+		return (6);
+	}
+	while (str[res])
 	{
 		write(1, &str[res], 1);
 		res++;

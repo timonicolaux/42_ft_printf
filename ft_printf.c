@@ -6,7 +6,7 @@
 /*   By: tnicolau <tnicolau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 10:54:08 by tnicolau          #+#    #+#             */
-/*   Updated: 2023/11/22 16:32:12 by tnicolau         ###   ########.fr       */
+/*   Updated: 2023/11/24 14:04:36 by tnicolau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,30 +19,30 @@ static int	check_format(const char c, va_list args)
 	result = 0;
 	if (c == 'c')
 		result += print_char(va_arg(args, int));
-	if (c == 's')
+	else if (c == 's')
 		result += print_str(va_arg(args, char *));
-	if (c == 'p')
-		return (0); /////////
-	if (c == 'd')
+	else if (c == 'p')
+		result += print_pointer(va_arg(args, long unsigned int));
+	else if (c == 'd')
 		result += print_num(va_arg(args, int));
-	if (c == 'i')
+	else if (c == 'i')
 		result += print_num(va_arg(args, int));
-	if (c == 'u')
+	else if (c == 'u')
 		result += print_unsigned(va_arg(args, unsigned int));
-	if (c == 'x')
-		return (0); /////////
-	if (c == 'X')
-		return (0); /////////
-	if (c == '%')
+	else if (c == 'x')
+		result += print_hex(va_arg(args, unsigned int), c);
+	else if (c == 'X')
+		result += print_hex(va_arg(args, unsigned int), c);
+	else if (c == '%')
 		result += print_char('%');
 	return (result);
 }
 
 int	ft_printf(const char *str, ...)
 {
-	int	i;
-	int	result;
-	va_list args;
+	int		i;
+	int		result;
+	va_list	args;
 
 	i = 0;
 	result = 0;
@@ -62,32 +62,44 @@ int	ft_printf(const char *str, ...)
 	return (result);
 }
 
-int	main(void)
-{
-	// char	str[] = "te%cst\n";
-	// ft_printf(str, 'Z');
+// int	main(void)
+// {
+	// char	str[] = "te%ds%ct%ct%c\n";
+	// ft_printf(str, 12);
+	// printf(str, 12);
 
 	// char	str[] = "te%sst\n";
 	// ft_printf(str, "coucou");
 
-	// char	str[] = "te%dt\n";
-	// ft_printf(str, 1254);
-	// printf(str, 1254);
+	// char	str[] = "%d\n";
+	// ft_printf(str, -1);
+	// printf(str, -1);
 
 	// char	str[] = "te%it\n";
 	// ft_printf(str, 1254);
 	// printf(str, 1254);
 
 	// char	str[] = "result : %u\n";
-	// ft_printf(str, 4294967295);
-	// printf(str, 4294967295);
+	// ft_printf(str, -42);
+	// printf(str, -42);
 
 	// char	str[] = "result : %%\n";
 	// ft_printf(str, "test");
 	// printf(str, "test");
 
-	// char	str[] = "%p\n";
+	// char	str[] = " %p ";
+	// ft_printf(str, 0);
+	// printf(str, 0);
 
-	// ft_printf("%s\n", "test");
-	// printf(str, "t");
-}
+	// char	str[] = "%x\n";
+	// ft_printf(str, 0);
+	// printf(str, 0);
+
+	// char	str[] = "%X\n";
+	// ft_printf(str, 15526);
+	// printf(str, 15526);
+
+	// char	str[] = "%p\n";
+	// ft_printf(str, 15526);
+	// printf(str, 15526);
+// }
