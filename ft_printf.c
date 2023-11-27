@@ -6,7 +6,7 @@
 /*   By: tnicolau <tnicolau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 10:54:08 by tnicolau          #+#    #+#             */
-/*   Updated: 2023/11/24 14:04:36 by tnicolau         ###   ########.fr       */
+/*   Updated: 2023/11/27 15:23:47 by tnicolau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,8 +92,8 @@ int	ft_printf(const char *str, ...)
 	// printf(str, 0);
 
 	// char	str[] = "%x\n";
-	// ft_printf(str, 0);
-	// printf(str, 0);
+	// ft_printf(str, 1500);
+	// printf(str, 1500);
 
 	// char	str[] = "%X\n";
 	// ft_printf(str, 15526);
